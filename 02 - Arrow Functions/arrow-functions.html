@@ -7,6 +7,27 @@
 <body>
 <script>
   const names = ['sam','daphne','madelyn']
+
+  // Let's say we want to add a last name to each item of the array:
+  const fullNames = names.map(function(name) {
+    return `${name} luedke`;
+  });
+  console.log(fullNames);
+
+  //Now let's do the same function with a fat arrow function
+  const fullNames2 = names.map((name) => {
+    return `${name} luedke`;
+  });
+  console.log(fullNames2);
+
+  // Arrow functions let you use implicit returns. Below is an example of doing that with ES6.
+  // We don't have to use the "return" term to get a return, es6 will return it for us.
+  const fullNames3 = names.map(name => `${name} Luedke` );
+  console.log(fullNames3);
+
+
+
+
 </script>
 </body>
 </html>
