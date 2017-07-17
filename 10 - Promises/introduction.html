@@ -90,12 +90,24 @@ function getPostById(id) {
         }, 2000)
     })
 }
-
+// Here is an example of calling the promise and it getting caught when it is rejected
 getPostById(7)
     .then(post => {
         console.log(post);
     })
+    .catch(err => {
+        console.log(err);
+    })
 
+
+// Here is another example of caling the promise but it resolves, because it matches the ID
+getPostById(2)
+    .then(post => {
+        console.log(post);
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 
 
