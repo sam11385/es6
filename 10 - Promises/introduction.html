@@ -5,36 +5,70 @@
   <title></title>
 </head>
 <body>
-    fun
 <script>
 
 //The old way of doing callbacks:
-// if ($('body').hasClass('brewery')) {
-//     var url = 'https://api.punkapi.com/v2/beers';
+// var url = 'https://api.punkapi.com/v2/beers';
 
-//     $.getJSON(url, function(data){
-//         for (let i = 0; i < data.beers.length; i++) {
-//         var name = data.beers[i].name;
-//         var abv = data.beers[i].abv;
-//         var descript = data.beers[i].descript;
-//         }
-//     });
-// }
+// $.getJSON(url, function(data){
+//     for (let i = 0; i < data.beers.length; i++) {
+//     var name = data.beers[i].name;
+//     var abv = data.beers[i].abv;
+//     var descript = data.beers[i].descript;
+//     }
+// });
 
 // Lets do some callbacks with promises and stuff - and take some notes
 // A promise is something that will happen between now and the end of time
 // JS is almost entirely asynchronous by nature
 
 console.log("Let us get some data from wes posts via fetch")
-const posts = fetch("https://wesbos.com/wp-json/wp/v2/posts");
+const posts = fetch("http://api.openweathermap.org/data/2.5/weather?zip=30033,us&appid=6ba9fe7b01ace29efd87f6336dcd299b");
 console.log("Done");
 console.log(posts);
 
 
-// Ok lets create a promise now
+// Ok lets construct a promise now
 const p = new Promise((resolve, reject) => {
-
+    setTimeout(() => {
+        //resolve('Sam is great');
+        reject(Error('Sam is just ok'));
+    }, 3000);
+    
 });
+
+p
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+
+// Promise example - open weather API
+var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?zip=30033,us&appid=6ba9fe7b01ace29efd87f6336dcd299b';
+fetch(weatherUrl)
+    .then(data => data.json())
+    .then(data => {
+        //console.table(data);          
+        let temp = (((data.main.temp - 273.15)*1.8)+32);
+        document.querySelector("pre").append(JSON.stringify(temp));
+        //document.querySelector("pre").innerHTML = JSON.stringify(temp, null, 2);
+        //return data;
+    })
+    .catch(e => {
+        console.log(e, 'fail!');
+        return e;
+    });
+
+
+
+
+
+
+
+
 
 // Interview question: What is wrong with this code? Tell us about it
 function saveAndQuit() {
@@ -48,12 +82,19 @@ function saveAndQuit() {
 // Answers/questions to raise:
 /*
 
-- Is saveAndQuit part of another method? Not sure how I would access "data" (line 41)
+- Is saveAndQuit part of another method? Not sure how I would access this.saveData
 - Is "data" a global variable you dont have up there or should it be an argument
 - Is this a promise? I see ".then" but there is no "catch" for possible errors coming from the execution of the promise
-- 
 */
 
+
+
+
+
+
+
 </script>
+
+<pre>temperature: </pre>
 </body>
 </html>
