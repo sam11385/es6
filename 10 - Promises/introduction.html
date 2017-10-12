@@ -62,7 +62,7 @@ fetch(weatherUrl)
         return e;
     });
 
-// Promise example - getting authors and IDs
+// Promise examples - getting authors and IDs
 const posts = [
     { title: 'I love JavaScript', author: 'Wes Bos', id: 1 },
     { title: 'CSS!', author: 'Chris Coyier', id: 2 },
@@ -99,7 +99,6 @@ getPostById(7)
         console.log(err);
     })
 
-
 // Here is another example of caling the promise but it resolves, because it matches the ID
 getPostById(2)
     .then(post => {
@@ -110,6 +109,24 @@ getPostById(2)
     })
 
 
+function getAuthByName(name){
+    return new Promise((resolve, reject) => {
+        const author = authors.find(author => author.name == name);
+        if(author){
+            resolve(author);
+        } else {
+            reject(Error("No name for author!"))
+        }
+    })
+}
+
+getAuthByName("Wes Bos")
+    .then(author => {
+        console.log(author.name)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 
 
 
