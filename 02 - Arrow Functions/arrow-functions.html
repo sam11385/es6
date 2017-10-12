@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>Arrow Functions</title>
 </head>
+
 <body>
-<script>
-  const names = ['sam','daphne','madelyn']
+  <script>
+    const names = ['sam', 'daphne', 'madelyn'];
 
-  // Let's say we want to add a last name to each item of the array:
-  const fullNames = names.map(function(name) {
-    return `${name} luedke`;
-  });
-  console.log(fullNames);
+    // Let's say we want to add a last name to each item of the array:
+    const fullNames = names.map(function (name) {
+      return `${name} luedke`;
+    });
+    console.log(fullNames);
 
-  //Now let's do the same function with a fat arrow function
-  const fullNames2 = names.map((name) => {
-    return `${name} luedke`;
-  });
-  console.log(fullNames2);
+    //Now let's do the same function with a fat arrow function
+    const fullNames2 = names.map((name) => {
+      return `${name} luedke`;
+    });
+    console.log(fullNames2);
 
-  // Arrow functions let you use implicit returns. Below is an example of doing that with ES6.
-  // We don't have to use the "return" term to get a return, es6 will return it for us.
-  const fullNames3 = names.map(name => `${name} Luedke` );
-  console.log(fullNames3);
-
-
-  // Example below of an implicit return with an object literal
-  // Basically, creating an object out of an array by using the arrow function
-  const race = '100m dash';
-  const winners = ['Sam', 'Usain Bolt', 'John Yam'];
-
-  const win = winners.map((winner, i) => ({name: winner, race: race, place: i + 1}))
-  console.table(win);
-
-  // Another example of a fat arrow function
-  // Get the ages greater than 60. Before we could do an if statement and then return those values that pass.
-  // But now with an arrow function we can make the code cleaner and more concise
-  const ages = [23,65,61,69,2,19,20,74,29,32,81,92];
-  const old = ages.filter(age => age >= 60);
-  console.log(old);
+    // Arrow functions let you use implicit returns. Below is an example of doing that with ES6.
+    // We don't have to use the "return" term to get a return, es6 will return it for us.
+    const fullNames3 = names.map(name => `${name} Luedke`);
+    console.log(fullNames3);
 
 
+    // Example below of an implicit return with an object literal
+    // Basically, creating an object out of an array by using the arrow function
+    const race = '100m dash';
+    const winners = ['Sam', 'Usain Bolt', 'John Yam'];
+
+    const win = winners.map((winner, i) => ({ name: winner, race: race, place: i + 1 }))
+    console.table(win);
+
+    // Another example of a fat arrow function
+    // Get the ages greater than 60. Before we could do an if statement and then return those values that pass.
+    // But now with an arrow function we can make the code cleaner and more concise
+    const ages = [23, 65, 61, 69, 2, 19, 20, 74, 29, 32, 81, 92];
+    const old = ages.filter(age => age >= 60);
+    console.log(old);
 
 
-</script>
+
+
+  </script>
 </body>
+
 </html>
